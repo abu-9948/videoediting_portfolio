@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@500;600;700&display=swap');
+
 
 * {
     margin: 0;
@@ -58,7 +59,7 @@ body{
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+
 
 .navbar a {
     font-size: 24px;
@@ -69,7 +70,30 @@ body{
     letter-spacing: 0.5px; /* Adds spacing for elegance */
     transition: color 0.3s ease, transform 0.2s ease;
 }
-
+/* Default hidden for mobile */
+@media (max-width: 768px) {
+    .navbar {
+       
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white; /* Adjust color as needed */
+        padding: 10px 0;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    .navbar.active {
+        visibility: visible;
+    opacity: 1;
+    display: flex;
+       
+    }
+}
 
 .navbar a:hover,
 .navbar a.active {
@@ -88,7 +112,7 @@ body{
 @media (max-width: 768px) {
     .header {
         padding: 15px 5%;
-        background: rgba(0, 0, 0, 0.9); /* Slightly darker for contrast */
+        background: rgba(0, 0, 0, 0.85); /* Slightly darker for contrast */
     }
 
     /* Adjusting Logo */
@@ -101,6 +125,7 @@ body{
         display: block;
         font-size: 32px; /* Slightly larger for better accessibility */
         cursor: pointer;
+        z-index: 1001; /* Ensure it's above other elements */
     }
 
     /* Navbar Adjustments */
@@ -123,34 +148,50 @@ body{
     }
 
     .navbar a {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 700; /* More prominent on mobile */
         padding: 10px 0;
     }
 }
 
 
-
-
+@media (max-width: 768px) {
+    .home {
+        padding: 0 3%;
+    }
+}
+@media (max-width: 768px) {
+    section {
+        padding: 8rem 3% 2rem;
+    }
+}
 
 section {
     min-height: 100vh;
-    padding: 10rem 9% 2rem;
+    padding: 10rem 5% 2rem;
    
 }
 
 .home {
     display: flex;
-    align-items: center;
-    padding: 0 9%;
-    background: url('../images/banner1.jpg') no-repeat center;
-    background-size: cover;
+    align-items: left;
+    padding: 0 10%;
+  
+    justify-content: center; /* Center content */
+ 
+    flex-direction: column; /* Stack content vertically */
+  
+   
     background-position: center;
+    text-align: center; 
+    background-size: cover;
+   
 }
 
 
 .home-content {
     max-width: 70rem;
+    text-align: left;
 }
 
 .home-content h1 {
@@ -169,6 +210,7 @@ section {
     -webkit-background-clip: text;
     background-clip: text;
     background-position: 0 0;
+    background-size: 100% 100%;
 }
 
 .home-content p {
@@ -192,6 +234,10 @@ section {
 }
 
 @media (max-width: 768px) {
+    .home-content {
+        max-width: 100%;
+        text-align: center; /* Align text to center for better readability */
+    }
     .home-content h1 {
         font-size: 3.5rem;
     }
@@ -249,6 +295,7 @@ section {
 
 .btn-box .btn:nth-child(2):hover {
     color: var(--bg-color);
+    background: var(--main-color);
 }
 
 .btn-box .btn:nth-child(2)::before {
@@ -272,11 +319,23 @@ section {
     color: var(--text-color);
 }
 
+@media (max-width: 1024px) {
+    .home-img {
+        width: 50rem;
+        height: 50rem;
+    }
+}
 
+@media (max-width: 768px) {
+    .home-img {
+        width: 40rem;
+        height: 40rem;
+    }
+}
 
 
 .heading {
-    font-size: 7rem;
+    font-size: 6rem;
     margin-bottom: 2rem;
     text-align: center;
 }
@@ -284,18 +343,22 @@ section {
 span {
     color: var(--main-color);
 }
+
 .home-img {
-    position: absolute;
-    right: 5%;
+    position:absolute;
+    right: 0; /* Ensure it doesn’t shift */
     top: 20%;
-    width: 70rem;
-    height: 70rem;
+    width: 60rem;
+    height: 60rem;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
+    margin-left: auto;  /* Pushes it to the right */
+    margin-right: 5%;   /* Controls right alignment */
 }
+
 
 .home-img img {
     width: 80%;
@@ -310,7 +373,7 @@ span {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 5rem 20%;
+    padding: 5rem 15%;
     color: #ffffff;
     text-align: center;
 }
@@ -319,7 +382,7 @@ span {
     font-size: 4rem;
     font-weight: 700;
     color: var(--main-color);
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin-bottom: 2rem;
     position: relative;
 }
@@ -336,14 +399,14 @@ span {
     font-size: 1.5rem; /* Adjust heading size */
     margin-top: 1.5rem;
  /* Use your main theme color */
-    font-weight: semi-bold;
+    font-weight:600;
 }
 
 .about-content h3 {
     font-size: 3rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 1rem;
-    color: var(--accent-color);
+   
 }
 
 .about-content p {
@@ -378,7 +441,6 @@ span {
     background: var(--accent-color);
     transform: scale(1.05);
 }
-
 .video-row {
     display: flex;
     justify-content: center;
@@ -388,7 +450,7 @@ span {
 }
 
 .video-column {
-    flex: 1;
+    flex-basis: 480px; /* Ensures a minimum width instead of flex:1 */
     max-width: 480px;
     text-align: center;
 }
@@ -405,17 +467,10 @@ span {
     transform: scale(1.03);
 }
 
-.video-row .video-column h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    color: var(--text-color);
-    text-align: center;
-    margin-top: 10px;
-}
 .video-column iframe {
     width: 100%;
-    height: 790px; /* Increase height for better visibility */
+    min-height: 790px; /* Responsive height */
+    aspect-ratio: 16/9; /* Maintains aspect ratio */
     max-width: 480px;
     border: 3px solid white;
     border-radius: 10px;
@@ -430,51 +485,43 @@ span {
 .contact {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Aligns content to the top */
+    justify-content: center; 
     align-items: center;
-    height: 80vh; /* Reduce height to move everything up */
+    height: 80vh; 
     text-align: center;
-    padding-top: 5rem; /* Push content slightly down */
+    padding-top: 5rem; 
 }
 
-
-.contact .text {
-    font-size: 4rem; /* Bigger heading */
-
-    font-weight: 700;
-    color: var(--main-color);
-    margin-bottom: 3rem; /* Space between heading and icons */
-}
-.recent .text {
-    font-size:3.5rem; /* Bigger heading */
+.contact .text, .recent .text {
+    font-size: 3.5rem; 
     font-weight: 700;
     text-align: center;
     color: var(--main-color);
-    margin-bottom: 2rem; /* Space between heading and icons */
+    margin-bottom: 2rem; 
 }
- 
 
- section .title{
-    position: relative;
+section .title {
     text-align: center;
     font-size: 40px;
     font-weight: 500;
     margin-bottom: 60px;
     padding-bottom: 20px;
     font-family: 'Ubuntu', sans-serif;
+    position: relative;
 }
 
-section .title::before{
+section .title::before {
     content: "";
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: 50%;
     width: 180px;
     height: 3px;
     background: #111;
     transform: translateX(-50%);
 }
-section .title::after{
+
+section .title::after {
     position: absolute;
     bottom: -8px;
     left: 50%;
@@ -485,30 +532,26 @@ section .title::after{
     transform: translateX(-50%);
 }
 
- .max-width{
+.max-width {
     max-width: 1300px;
     padding: 0 80px;
     margin: auto;
 }
 
-
-
-
-
- .footer {
+.footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     padding: 2rem 9%;
     background: var(--second-bg-color);
- }
+}
 
- .footer-text p {
-    font-size: 1.6rem;
- }
+.footer-text p {
+    font-size: 2rem;
+}
 
- .footer-iconTop a {
+.footer-iconTop a {
     position: relative;
     display: inline-flex;
     justify-content: center;
@@ -517,18 +560,34 @@ section .title::after{
     background: var(--main-color);
     border: .2rem solid var(--main-color);
     border-radius: .6rem;
- }
-
- .footer-iconTop a i {
-    font-size: 2.4rem;
-    color: var(--bg-color);
- }
- .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 40px; /* Space between icons */
 }
 
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: var(--bg-color);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.social-links a {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border-radius: 50%;
+    border: 0.3rem solid var(--main-color);
+    font-size: 32px;
+    color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden; /* Prevents background overflow */
+    position: relative;
+}
 
 .social-links a::before {
     content: '';
@@ -545,19 +604,6 @@ section .title::after{
 .social-links a:hover::before {
     width: 100%;
 }
-.social-links a {
-    width: 70px; /* Larger icons */
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    border-radius: 50%;
-    border: 0.3rem solid var(--main-color);
-    font-size: 32px; /* Larger icon size */
-    color: var(--text-color);
-    transition: all 0.3s ease-in-out;
-}
 
 .social-links a:hover {
     background: var(--main-color);
@@ -565,22 +611,20 @@ section .title::after{
 }
 
 ul {
-    list-style: none; /* Removes default bullet points */
+    list-style: none;
     padding: 0;
     margin: 1rem 0;
+    text-align: left;
 }
 
 ul li {
-    font-size: 2.2rem; /* Adjust text size */
-    margin-bottom: 0.8rem; /* Space between list items */
-    padding-left: 2rem; /* Indent items for better readability */
-    position: relative; /* Needed for custom bullets */
-    text-align: left;;
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    padding-left: 2rem;
+    position: relative;
 }
-
-
 
 p {
     font-size: 1.2rem;
-    line-height: 1.4; /* Improves readability */
+    line-height: 1.4;
 }
